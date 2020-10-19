@@ -33,7 +33,7 @@ class TransformerMCReader(DatasetReader):
 
         self._tokenizer = PretrainedTransformerTokenizer(
             transformer_model_name, add_special_tokens=False,
-            transformer_kwargs={"add_prefix_space": add_prefix_space}
+            tokenizer_kwargs={"add_prefix_space": add_prefix_space}
         )
         from allennlp.data.token_indexers import PretrainedTransformerIndexer
 
