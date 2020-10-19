@@ -25,13 +25,15 @@ class TransformerMCReader(DatasetReader):
     """
 
     def __init__(
-        self, transformer_model_name: str = "roberta-large", length_limit: int = 512, **kwargs
+        self, transformer_model_name: str = "roberta-large", length_limit: int = 512,
+              add_prefix_space: bool = False, **kwargs
     ) -> None:
         super().__init__(**kwargs)
         from allennlp.data.tokenizers import PretrainedTransformerTokenizer
 
         self._tokenizer = PretrainedTransformerTokenizer(
-            transformer_model_name, add_special_tokens=False
+            transformer_model_name, add_special_tokens=False,
+            transformer_kwargs: {"add_prefix_space": add_prefix_space}
         )
         from allennlp.data.token_indexers import PretrainedTransformerIndexer
 
